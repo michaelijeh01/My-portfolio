@@ -70,60 +70,51 @@
 
   /* ---------- Hero ---------- */
   .hero{padding:72px 0 56px;}
-  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
+  .hero-grid{display:flex;flex-direction:column;gap:36px;}
   .eyebrow{
     font-size:13px;color:var(--gold-300);
     text-transform:uppercase;letter-spacing:0.14em;
     margin-bottom:18px;
   }
-  .hero h1{font-size:clamp(34px,4.6vw,54px);margin-bottom:20px;}
+  .hero h1{font-size:clamp(34px,4.6vw,54px);margin-bottom:20px;max-width:720px;}
   .hero h1 em{font-style:normal;color:var(--gold-500);}
   .hero p.lede{font-size:18px;color:var(--slate-300);max-width:480px;margin-bottom:32px;}
   .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
 
-  /* ---------- Phone mockup / signature element ---------- */
-  .phone-shell{
+  /* ---------- Demo video / signature element ---------- */
+  .video-card{
     background:var(--indigo-900);
     border:1px solid var(--indigo-700);
-    border-radius:22px;
+    border-radius:18px;
     padding:14px;
-    max-width:340px;margin:0 auto;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+    max-width:820px;
+    margin:0 auto;
   }
-  .phone-header{
+  .video-card-header{
     display:flex;align-items:center;gap:10px;
-    padding:6px 8px 14px;
+    padding:4px 6px 14px;
   }
-  .phone-avatar{
+  .video-avatar{
     width:34px;height:34px;border-radius:50%;
     background:var(--gold-500);color:var(--indigo-950);
     display:flex;align-items:center;justify-content:center;
     font-weight:700;font-size:15px;flex-shrink:0;
   }
-  .phone-header .name{font-size:14px;font-weight:600;}
-  .phone-header .status{font-size:11px;color:var(--slate-500);}
-  .phone-screen{
+  .video-card-header .name{font-size:14px;font-weight:600;}
+  .video-card-header .status{font-size:11px;color:var(--slate-500);}
+  .video-frame{
     background:var(--indigo-950);
-    border-radius:14px;
-    height:360px;
-    padding:16px 12px;
-    display:flex;flex-direction:column;gap:10px;
+    border-radius:12px;
     overflow:hidden;
-    position:relative;
+    aspect-ratio:16/9;
   }
-  .bubble{
-    max-width:78%;
-    padding:9px 13px;
-    border-radius:13px;
-    font-size:13px;
-    opacity:0;
-    animation:fadeUp .5s ease forwards;
+  .video-frame video{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+    background:#000;
   }
-  .bubble.bot{align-self:flex-start;background:var(--indigo-800);border-bottom-left-radius:4px;}
-  .bubble.user{align-self:flex-end;background:var(--gold-500);color:var(--indigo-950);border-bottom-right-radius:4px;}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-  #b1{animation-delay:.2s}#b2{animation-delay:1.3s}#b3{animation-delay:2.4s}
-  #b4{animation-delay:3.5s}#b5{animation-delay:4.6s}#b6{animation-delay:5.7s}
 
   /* ---------- Section shared ---------- */
   section{padding:64px 0;}
@@ -194,7 +185,7 @@
     .feature-grid{grid-template-columns:1fr;}
     .pricing-grid{grid-template-columns:1fr;}
     .hero{padding:48px 0 40px;}
-    .phone-shell{max-width:300px;}
+    .video-card{max-width:100%;}
   }
   @media (prefers-reduced-motion:reduce){
     .bubble{animation:none;opacity:1;}
@@ -246,29 +237,12 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">Bots that works for you · Built for Nigerian businesses</div>
+      <div class="eyebrow">Custom ordering bots · Built for Nigerian businesses</div>
       <h1>Your customers order.<br>Your <em>bot</em> handles it.<br>You just deliver.</h1>
       <p class="lede">I build Telegram bots that take orders, collect payment, and notify you the moment someone buys — so you stop losing sales to slow replies.</p>
       <div class="hero-ctas">
         <a class="btn" href="https://wa.me/2349017758930" target="_blank" rel="noopener">Get a bot like this →</a>
-        <a class="btn btn-ghost" href="#case">See it in action</a>
-      </div>
-    </div>
-    <div class="phone-shell">
-      <div class="phone-header">
-        <div class="phone-avatar">R</div>
-        <div>
-          <div class="name">Roban Store</div>
-          <div class="status">bot · online</div>
-        </div>
-      </div>
-      <div class="phone-screen">
-        <div class="bubble bot" id="b1">Welcome to Roban Store 🛒 What would you like to do?</div>
-        <div class="bubble user" id="b2">Browse products</div>
-        <div class="bubble bot" id="b3">Rice, 5kg bag — ₦4,500<br>Cooking oil, 1L — ₦2,200</div>
-        <div class="bubble user" id="b4">+ Rice, 5kg bag</div>
-        <div class="bubble bot" id="b5">Order confirmed ✅ ORB-1042<br>Total ₦4,500</div>
-        <div class="bubble bot" id="b6">🆕 New order alert sent to owner</div>
+        <a class="btn btn-ghost" href="#demo">See it in action</a>
       </div>
     </div>
   </div>
@@ -458,6 +432,31 @@
   </div>
 </section>
 
+<section id="demo">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <div class="eyebrow">Live demo</div>
+      <h2>See it in action</h2>
+      <p>The full walkthrough — from browsing to checkout to the owner getting notified. Not a mockup, this is the real bot running.</p>
+    </div>
+    <div class="video-card">
+      <div class="video-card-header">
+        <div class="video-avatar">R</div>
+        <div>
+          <div class="name">Roban Store — full walkthrough</div>
+          <div class="status">order to delivery, start to finish</div>
+        </div>
+      </div>
+      <div class="video-frame">
+        <video controls playsinline preload="metadata" poster="demo-poster.jpg">
+          <source src="demo.mp4" type="video/mp4">
+          Your browser doesn't support embedded video. <a href="demo.mp4">Download the demo video</a> instead.
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <h2>Want this running for your business?</h2>
@@ -482,4 +481,3 @@
 
 </body>
 </html>
-_
